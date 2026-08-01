@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class tree : MonoBehaviour
 {
+    private Rigidbody rd;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,13 +22,13 @@ public class tree : MonoBehaviour
 
         Player player = collision.gameObject.GetComponent<Player>();
         if (player == null)
-
             return;
 
         player.HP -= 15;
+        UIman
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         rd.material.color = new Color32(255, 255, 255, 255);
     }

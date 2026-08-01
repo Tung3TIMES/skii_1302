@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField]
-
-
+    private int point;  
+    public int Point { get { return point; } set { point = value; } }
 
     private InputAction moveAction;
     private Vector2 moveValue;
@@ -22,10 +22,10 @@ public class Player : MonoBehaviour
     public int HP { get { return hp; } set { hp = value; } }
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        moveAction = new InputAction.actioms.FindAction("Move");
-        rb = Getcomponent<Rigidbody>();
+        moveAction = InputSystem.actions.FindAction("Move");
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -39,4 +39,7 @@ public class Player : MonoBehaviour
         moveValue = moveAction.ReadValue<Vector2>();
         rb.AddForce(new Vector3(moveValue.x, 0, 0) * forcePower);
     }
+
+
+
 }
